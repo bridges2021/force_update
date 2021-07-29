@@ -1,10 +1,12 @@
 import 'package:bridges_firebase/bridges_firebase.dart';
 import 'package:example/FirebaseSettings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:force_update/ForceUpdate.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FlutterDownloader.initialize(debug: true);
   try {
     await initializeApps();
   } catch (e) {
