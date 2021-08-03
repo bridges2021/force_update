@@ -15,12 +15,7 @@ dependencies:
   open_file: ^3.2.1
   flutter_downloader: ^1.6.1
   path_provider: ^2.0.2
-  bridges_firebase:
-    git:
-      url: https://github.com/bridges2021/bridges_firebase.git
-      ref: main
-
-  url_launcher: ^6.0.9
+  permission_handler: ^8.1.4+2
 
 dev_dependencies:
   flutter_test:
