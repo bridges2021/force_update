@@ -1,6 +1,6 @@
 # force_update
  
-##Installation
+## Installation
 1. Add this lines to pub.yaml
 ```yaml
 force_update:
@@ -48,7 +48,7 @@ before </applcation>
         android:value="1" />
     </provider>
 ```
-##How to use
+## How to use
 1. Wrap your main page with ForceUpdate, give it the latest version and update url
 ```dart
 ForceUpdate(
