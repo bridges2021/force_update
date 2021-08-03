@@ -13,14 +13,14 @@ force_update:
 WidgetsFlutterBinding.ensureInitialized();
 await FlutterDownloader.initialize(debug: true);
 ```
-3. Add this lines to android/app/src/main/AndroidManifest.xml before ```text<application>```
+3. Add this lines to android/app/src/main/AndroidManifest.xml before ```yaml<application>```
 ```xml
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 ```
-before ```text</applcation>```
+before ```yaml</applcation>```
 ```xml
 <provider
     android:name="vn.hunghd.flutterdownloader.DownloadedFileProvider"
