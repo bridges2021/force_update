@@ -142,7 +142,21 @@ class __ForceUpdaterState extends State<_ForceUpdater> {
   }
 
   Future<void> _getDirectory() async {
-    _directory = (await getTemporaryDirectory()).path;
+    _directory =
+        (await _findLocalPath())! + Platform.pathSeparator + 'Download';
+
+    final savedDir = Directory(_directory);
+    bool hasExisted = await savedDir.exists();
+    if (!hasExisted) {
+      savedDir.create();
+    }
+  }
+
+  Future<String?> _findLocalPath() async {
+    final directory = Theme.of(context).platform == TargetPlatform.android
+        ? await getExternalStorageDirectory()
+        : await getApplicationDocumentsDirectory();
+    return directory?.path;
   }
 
   @override

@@ -17,15 +17,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ForceUpdate(getVersionAndUrl: (String packageName) async {
-        final _doc = await FirebaseFirestore.instance.collection('Packages').doc(packageName).get();
-        return {'version': _doc.data()!['version'], 'url': _doc.data()!['url']};
-      }, child: Scaffold(
-        body: Center(
-          child: Text('You are up to date'),
+      home: ForceUpdate(
+        getVersionAndUrl: (String packageName) async {
+          final _doc = await FirebaseFirestore.instance
+              .collection('Packages')
+              .doc(packageName)
+              .get();
+          return {
+            'version': _doc.data()!['version'],
+            'url': _doc.data()!['url']
+          };
+        },
+        child: Scaffold(
+          body: Center(
+            child: Text('You are up to date'),
+          ),
         ),
-      ),
-
       ),
     );
   }
