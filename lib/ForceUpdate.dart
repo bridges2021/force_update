@@ -167,12 +167,35 @@ class __ForceUpdaterState extends State<_ForceUpdater> {
           child: CircularProgressIndicator(),
         ),
       );
-    } else if (_isUpdateToDate) {
-      return widget.child;
+    } else if (_havePermission) {
+      if (_isUpdateToDate) {
+        return widget.child;
+      } else {
+        return _build();
+      }
+
     } else {
-      return _build();
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error,size: 30,),
+              Container(height: 20,),
+              Text('Permission denied',style: Theme.of(context).textTheme.headline6),
+              Container(height: 20,),
+              ElevatedButton(onPressed: () async {
+                _havePermission = await _checkPermission();
+                setState(() {
+
+                });
+              }, child: Text('Provide access',style: Theme.of(context).textTheme.headline6))
+            ],
+          ),
+        ),
+      );
     }
-  }
+    }
 
   Widget _build() => Scaffold(
         appBar: AppBar(
