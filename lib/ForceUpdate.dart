@@ -14,8 +14,11 @@ import 'Task.dart';
 
 class ForceUpdate extends StatelessWidget {
   const ForceUpdate(
-      {Key? key, required this.child, required this.getVersionAndUrl})
+      {Key? key, required this.child, required this.getVersionAndUrl, this.debug = false})
       : super(key: key);
+
+  /// Skip version checking
+  final bool debug;
 
   final Widget child;
   final Future<Map<String, dynamic>> Function(String packageName)
@@ -23,7 +26,7 @@ class ForceUpdate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
+    if (kIsWeb || debug) {
       return child;
     } else if (Platform.isAndroid) {
       return _ForceUpdater(
